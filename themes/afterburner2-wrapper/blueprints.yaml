@@ -1,0 +1,8 @@
+name: afterburner2-wrapper
+version: 1.0.0
+description: "Extending afterburner2"
+icon: crosshairs
+author:
+ name: Elias Abacioglu
+ email: devs@getgrav.org
+ url: http://getgrav.org

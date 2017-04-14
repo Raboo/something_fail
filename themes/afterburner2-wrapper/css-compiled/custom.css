@@ -1,0 +1,15 @@
+#header h1 {
+  margin: 0;
+  text-align: left;
+  color: #ed6f6d;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 800;
+  font-style: normal; }
+  #header h1 span.title-something {
+    display: inline-block;
+    font-size: 0.65em; }
+  #header h1 span.title-fail {
+    display: inline-block;
+    font-size: 1.15em; }
+
+/*# sourceMappingURL=custom.css.map */
