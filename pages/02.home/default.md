@@ -1,5 +1,5 @@
 ---
-title: About
+title: Home
 visible: false
 content:
     items: '@self.children'
