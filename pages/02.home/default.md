@@ -1,5 +1,6 @@
 ---
 title: About
+visible: false
 content:
     items: '@self.children'
     limit: '5'
