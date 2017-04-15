@@ -3,7 +3,7 @@ title: About
 process:
     markdown: true
     twig: true
-twig_first: true
+twig_first: false
 content:
     items: '@self.modular'
     order:
