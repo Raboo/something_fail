@@ -1,5 +1,8 @@
 ---
 title: About
+process:
+    markdown: true
+    twig: true
 content:
     items: '@self.modular'
     order:
