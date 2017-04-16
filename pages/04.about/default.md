@@ -1,5 +1,5 @@
 ---
-title: About
+title: Bio
 content:
     items: '@self.children'
     limit: '5'
@@ -9,10 +9,11 @@ content:
     pagination: '1'
 ---
 
-## About Elias
+## Elias Abacioglu
+#### IT Infrastructure Specialist / Ops-do-it-all
 
 
-[center]Say hi to me on these social networks[/center]
+[center]Online presence[/center]
 
 [center]
 [[fa=github extras=fa-5x,fa-border /]](https://github.com/Raboo) &nbsp;&nbsp;
