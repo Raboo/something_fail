@@ -1,8 +1,8 @@
 ---
 title: About
 process:
-    markdown: true
     twig: true
+    markdown: false
 ---
 
 {% include 'partials/aboutme.html.twig' %}
