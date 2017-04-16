@@ -1,6 +1,7 @@
 ---
 title: About
 process:
+    markdown: true
     twig: true
 ---
 
