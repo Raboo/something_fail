@@ -1,11 +1,5 @@
 ---
 title: About
-process:
-    markdown: true
-    twig: true
-twig_first: true
-never_cache_twig: true
-cache_enable: false
 content:
     items: '@self.children'
     limit: '5'
@@ -15,4 +9,10 @@ content:
     pagination: '1'
 ---
 
-{% include 'partials/aboutme.html.twig' %}
+## About Elias
+
+
+Say hi to me on these social networks
+https://github.com/Raboo
+https://linkedin.com/in/elias82
+https://stackoverflow.com/users/1425670/raboo
