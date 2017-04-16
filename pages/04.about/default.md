@@ -13,6 +13,6 @@ content:
 
 
 Say hi to me on these social networks
-https://github.com/Raboo
+[fa=cog /](https://github.com/Raboo)
 https://linkedin.com/in/elias82
 https://stackoverflow.com/users/1425670/raboo
