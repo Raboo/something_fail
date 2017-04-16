@@ -6,7 +6,6 @@ process:
 twig_first: true
 never_cache_twig: true
 cache_enable: false
-debugger: true
 ---
 
 {% include 'partials/aboutme.html.twig' %}
