@@ -14,7 +14,7 @@ content:
 
 Say hi to me on these social networks
 
-[[fa=github /]](https://github.com/Raboo)
+[[fa=github]](https://github.com/Raboo)
 
 [[fa=linkedin-square]](https://linkedin.com/in/elias82)
 
