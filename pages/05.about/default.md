@@ -2,6 +2,8 @@
 title: About
 ---
 
+# About
+
 Okay,
 
 I decided to start a blog where I would write about stuff that I do at work.  
