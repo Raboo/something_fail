@@ -1,22 +1,19 @@
 ---
-title: Bio
-content:
-    items: '@self.children'
-    limit: '5'
-    order:
-        by: date
-        dir: desc
-    pagination: '1'
+title: About
 ---
 
-## Elias Abacioglu
-##### IT Infrastructure Specialist / Ops-do-it-all
+## About
 
-This is the part where I write something about myself.
-Perhaps I should write that I lack self-awreness.
+Okay,
 
-[center]Online presence[/center]
+I decided to start a blog where I would write about stuff that I do at work.  
+I manage the infrastructre on a small ad tech company and I'ed like to think that we work with interessting technologies.
 
-[center]
-[[fa=github extras=fa-5x,fa-border /]](https://github.com/Raboo)&nbsp;&nbsp; [[fa=linkedin-square extras=fa-5x,fa-border /]](https://linkedin.com/in/elias82)&nbsp;&nbsp; [[fa=stack-overflow extras=fa-5x,fa-border /]](https://stackoverflow.com/users/1425670/raboo)&nbsp;&nbsp;
-[/center]
+I will use this page as a scratchpad with ideas what to write about.  
+Meaning this page will be updated when I get an idea about something I can write about and thus summarize the content of my blog.
+
+* Open Source hyper converged infrastructure - OpenNebula/KVM + Ceph + openvswitch.
+* bare-metal image installs via PXE / The Foreman.
+* Our home made pager-duty solution.
+* Containers and clouds.
+* Choosing a blog platform.
