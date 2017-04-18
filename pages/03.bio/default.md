@@ -10,7 +10,7 @@ content:
 ---
 
 ## Elias Abacioglu
-![](2017-04-17%2013.06.20.jpg?thumbnail=default&display=thumbnail)
+![](2017-04-17%2013.06.20.jpg?resize=400,200)
 ##### IT Infrastructure Specialist / Ops-do-it-all
 
 This is the part where I write something about myself.  
