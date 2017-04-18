@@ -9,7 +9,8 @@ content:
     pagination: '1'
 ---
 
-## Elias Abacioglu[right]![](2017-04-17%2013.06.20.jpg?resize=100)[/right]
+## Elias Abacioglu
+![](2017-04-17%2013.06.20.jpg?resize=80)
 ##### IT Infrastructure Specialist / Ops-do-it-all
 
 This is the part where I write something about myself.  
