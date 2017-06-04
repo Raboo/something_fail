@@ -12,4 +12,4 @@ content:
 ---
 
 # Something FAIL
-## A blog of my tech adventures
+## Learn by failing
