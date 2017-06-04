@@ -1,6 +1,5 @@
 ---
 title: test
-body_classes: 'header-image fullwidth'
 content:
     items: '@self.children'
     limit: 5
