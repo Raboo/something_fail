@@ -1,5 +1,6 @@
 ---
 title: 'Bare Metal cloud-init images'
+published: false
 taxonomy:
     tag:
         - 'bare metal'
