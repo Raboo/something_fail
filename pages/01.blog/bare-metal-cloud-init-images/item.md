@@ -36,4 +36,9 @@ So I asked in #theforeman IRC channel on Freenode. And then I was told that Fore
 
 I then took the discovery image and used it to execute my scripts.
 
+
+slask
 Foreman plugin ehrm I mean a foreman discovery image plugin..
+Two different ways of deploying, hw , vps, two or more different ways of bootstrapping a node.
+
+
