@@ -7,7 +7,7 @@ taxonomy:
         - image
         - cloud-init
         - pxe
-visible: false
+visible: true
 ---
 
 # Linux install using images
