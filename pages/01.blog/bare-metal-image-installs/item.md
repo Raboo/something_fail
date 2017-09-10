@@ -31,9 +31,9 @@ The idea is simple.
 2. Write a Linux image to disk, reboot.
 3. Configure/bootstrap the OS.
 
-I mean how hard can that be, it's just 3 steps? Well there were some challanges.
-First of all we had Foreman in place and PXE+DHCP setup. So we are able to netboot machines.
+I mean how hard can that be, it's just 3 steps? Well there were some challanges, but I won't go in to that now.
 
+First of all we had Foreman in place and PXE+DHCP setup. So we are able to netboot machines.
 But then I had find a way to have a lightweight image (that has support for different types of hardware and RAID controllers) to boot and download a image and write it to disk.
 Really I wanted a Linux image or ISO that can PXE boot and directly after execute a script, so I Googled a bit and didn't find anything suiting. And I really didn't want to build and maintain my own image.
 
