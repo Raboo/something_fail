@@ -27,7 +27,7 @@ But the downsides where that it took a long time to install. We had to utilize p
 
 So I went on. How am I going to use this toolset I have available to write an Linux image to a hard drive.
 The idea is simple.
-1. Boot a machine.
+1. Network boot a machine.
 2. Write a Linux image to disk, reboot.
 3. Configure/bootstrap the OS.
 
