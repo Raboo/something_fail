@@ -40,7 +40,7 @@ Really I wanted a Linux image or ISO that can PXE boot and directly after execut
 So I asked in #theforeman IRC channel on Freenode. And then I was told that [Foreman Discovery Image](https://github.com/theforeman/foreman-discovery-image) was desigend to be able to be extended. Foreman Dicovery Image is the image that boots via PXE and does a inventory of the machine and then waits for a reboot order from Foreman, in order to run a regular(preseed/kickstart) netboot install after discovery.
 
 I then took the discovery image and used it for something that it wasn't intended originally. The extention part was mostly designed to add discovery facts or drivers.
-I used that function to shut down the discovery function and execute a set of scripts that would partition up a disk and write a Linux image to it and then setup grub plus some stuff and reboot after.
+I used that function to shut down the discovery function and execute a set of scripts that would partition up a disk and write a Linux image to it and then setup grub plus some other stuff and reboot after.
 After the reboot the machine bootstraps using cloud-init. Same thing you can use in the cloud or some virtualization systems like OpenNebula, OpenStack, CloudStack.
 
 For almost a year now we have been installation our bare metal in the same way we do with our virutal nodes. So if you want to try out image based installs for Linux you can find the Foreman plugin ehrm I mean a foreman discovery image plugin or whatever you want to call it on GitHub under the name [Foreman discovery image installer
