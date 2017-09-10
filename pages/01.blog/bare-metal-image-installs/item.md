@@ -45,7 +45,4 @@ After the reboot the machine bootstraps using cloud-init. Same thing you can use
 
 For almost a year now we have been installation our bare metal in the same way we do with our virutal nodes. So if you want to try out image based installs for Linux you can find the Foreman plugin ehrm I mean a foreman discovery image plugin or whatever you want to call it on GitHub under the name [Foreman discovery image installer
 ](https://github.com/deltaprojects/foreman_discovery_image_installer).
-But really it can probably be used with other tools than foreman as well.
-
-
-
+But really it can probably be used with tools other than foreman as well.
