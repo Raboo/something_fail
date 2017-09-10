@@ -1,5 +1,6 @@
 ---
 title: 'Linux image installs for Bare Metal'
+published: true
 taxonomy:
     tag:
         - 'bare metal'
