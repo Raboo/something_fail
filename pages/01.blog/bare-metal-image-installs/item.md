@@ -26,11 +26,12 @@ We use [Foreman](https://theforeman.org) for lifecycle management of our Linux n
 And with the help of Foreman we were deploying Ubuntu Linux nodes using preseed netboot installs. So installation of our bare metal node were already automated.
 But the downsides where that it took a long time to install. We had to utilize preseed which IMO sucks. It needs a lot of guesswork to get working and you end up needing to compromise. And whenver a new Ubuntu version comes you have to verify that you preseed scripts work for that version. I think the worst of all is the partman part of preseed. Don't get me started on partman, I get upset just writing about it. Then if you are going to deploy CentOS, RHEL, SuSE etc. They all have different ways of doing netinstalls (it's the linux way, no two vendors can cooperate and make something universal).
 
-So I went on. How am I going to use this toolset I have available to write an Linux image to a hard drive.
+So I went on. How am I going to use this toolset I have available to write an Linux image to a hard drive.  
 The idea is simple.
 1. Network boot a machine.
 2. Write a Linux image to disk, reboot.
-3. Configure/bootstrap the OS.   
+3. Configure/bootstrap the OS.
+
 I mean how hard can that be, it's just 3 steps? Well there were some challanges, but I won't go in to that cause it would lead to a very long blog post.
 
 First of all we had Foreman in place and PXE+DHCP setup. So we are able to netboot machines.
