@@ -11,7 +11,7 @@ taxonomy:
 visible: true
 ---
 
-<img src="https://media.giphy.com/media/xsATxBQfeKHCg/giphy.gif" alt="Typical deployment" style="width: 150px;"/>
+<img src="https://media.giphy.com/media/xsATxBQfeKHCg/giphy.gif" alt="Typical deployment" style="width: 190px;"/>
 Are you like me that use preseed/kickstart netboot installs for physical nodes and perhaps use images prepped with cloud-init to deploy virtual nodes?
 Having two or more different ways of deploying bare metal, virtual servers, multiple ways of bootstrapping a node.
 Have you been thinking or wanting to deploy physical nodes the same way you would virtual ones? Are you tired of the whole setup that needs to be different on different scenarios?
