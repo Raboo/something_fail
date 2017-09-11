@@ -13,7 +13,7 @@ content:
 ![](2017-04-17%2013.06.20.jpg?resize=60)
 ##### IT Infrastructure Specialist / Ops-do-it-all
 This is the part where I write something about myself.  
-Perhaps I should write that I lack self-awreness.
+Perhaps I should write that I lack self-awareness.
 
 
 
