@@ -16,6 +16,8 @@ Having two or more different ways of deploying bare metal, virtual servers, mult
 Have you been thinking or wanting to deploy physical nodes the same way you would virtual ones? Are you tired of the whole setup that needs to be different on different scenarios?
 If so, read on.
 
+![Typical deployment](https://giphy.com/gifs/car-clean-trying-dJEMs13SrsiuA)
+
 So for a while I was looking for a decent solution to deploy physical/bare metal nodes in the same way we do with cloud or virtual nodes.
 I've seen some small mentions on a few blogs about installing Linux images on bare metal. But no Open Source solution for it.
 So I was thinking, how hard can this be, why haven't anyone done this? So I wanted to to do this.
