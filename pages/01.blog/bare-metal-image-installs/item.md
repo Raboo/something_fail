@@ -17,6 +17,7 @@ Have you been thinking or wanting to deploy physical nodes the same way you woul
 
 If so, read on.
 [right]![Typical deployment](https://media.giphy.com/media/dJEMs13SrsiuA/giphy.gif?resize=200,200 "Typical deployment")[/right]
+<img src="https://media.giphy.com/media/dJEMs13SrsiuA/giphy.gif" alt="Typical deployment" style="width: 200px;"/>
 
 
 
