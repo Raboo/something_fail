@@ -16,7 +16,7 @@ Having two or more different ways of deploying bare metal, virtual servers, mult
 Have you been thinking or wanting to deploy physical nodes the same way you would virtual ones? Are you tired of the whole setup that needs to be different on different scenarios?
 
 If so, read on.
-[right]![Typical deployment](https://media.giphy.com/media/dJEMs13SrsiuA/giphy.gif "Typical deployment" =250x)[/right]
+[right]![Typical deployment](https://media.giphy.com/media/dJEMs13SrsiuA/giphy.gif =250x,"Typical deployment")[/right]
 
 
 
