@@ -1,5 +1,8 @@
 ---
 title: Blog
+taxonomy:
+    category:
+        - blog
 body_classes: 'header-image fullwidth'
 content:
     items: '@self.children'
