@@ -31,7 +31,6 @@ The idea is simple.
 1. Network boot a machine.
 2. Write a Linux image to disk, reboot.
 3. Configure/bootstrap the OS.
-
 I mean how hard can that be, it's just 3 steps? Well there were some challanges, but I won't go in to that cause it would lead to a very long blog post.
 
 First of all we had Foreman in place and PXE+DHCP setup. So we are able to netboot machines.
