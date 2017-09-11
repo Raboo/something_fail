@@ -20,8 +20,8 @@ If so, read on.
 So for a while I was looking for a decent solution to deploy physical/bare metal nodes in the same way we do with cloud or virtual nodes. I've saw some small mentions on one or two blog posts about installing Linux images on bare metal. But no Open Source solution for it.  
 So I was thinking, how hard can this be, why haven't anyone done this? So I wanted to to do this.
 
-I started thinking, do I have to components to be abile to achieve my goal? I went on looking at the components that we were currently using.  
-We use [Foreman](https://theforeman.org) for lifecycle management of our Linux nodes. Foreman manages our PXE, DHCP and DNS and later even auto discovery.  
+My next thought was, do I have to components to be abile to achieve my goal? I went on looking at the components that we were currently using.  
+We use [Foreman](https://theforeman.org) for lifecycle management of our Linux nodes. Foreman manages our PXE, DHCP and DNS and later even auto discovery. It was even at that time running chef before handing over the machine to us.  
 And with the help of Foreman we were deploying Ubuntu Linux nodes using preseed netboot installs. So installation of our bare metal node were already automated.  
 But the downsides where that it took a long time to install. We had to utilize preseed which IMO sucks. It needs a lot of guesswork to get working and you end up needing to compromise. And whenver a new Ubuntu version comes you have to verify that you preseed scripts work for that version. I think the worst of all is the partman part of preseed. Don't get me started on partman, I get upset just writing about it. Then if you are going to deploy CentOS, RHEL, SuSE etc. They all have different ways of doing netinstalls (it's the linux way, no two vendors can cooperate and make something universal).
 
