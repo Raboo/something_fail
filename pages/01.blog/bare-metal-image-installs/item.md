@@ -22,8 +22,8 @@ I've seen some small mentions on a few blogs about installing Linux images on ba
 So I was thinking, how hard can this be, why haven't anyone done this? So I wanted to to do this.
 
 I started thinking, do I have to components to be abile to achieve my goal? I went on looking at the components that we were currently using.
-We use [Foreman](https://theforeman.org) for deploing Linux nodes. Foreman manages our PXE rules/scipts, DHCP server, Bind DNS and later added auto discovery.
-And with the help of Foreman we were deploying Linux (Ubuntu) nodes using preseed netboot installs. So installation of our bare metal node were already automated.
+We use [Foreman](https://theforeman.org) for lifecycle management of our Linux nodes. Foreman manages our PXE, DHCP and DNS and later even auto discovery.
+And with the help of Foreman we were deploying Ubuntu Linux nodes using preseed netboot installs. So installation of our bare metal node were already automated.
 But the downsides where that it took a long time to install. We had to utilize preseed which IMO sucks. It needs a lot of guesswork to get working and you end up needing to compromise. And whenver a new Ubuntu version comes you have to verify that you preseed scripts work for that version. I think the worst of all is the partman part of preseed. Don't get me started on partman, I get upset just writing about it. Then if you are going to deploy CentOS, RHEL, SuSE etc. They all have different ways of doing netinstalls (it's the linux way, no two vendors can cooperate and make something universal).
 
 So I went on. How am I going to use this toolset I have available to write an Linux image to a hard drive.
