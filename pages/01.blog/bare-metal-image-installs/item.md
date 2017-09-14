@@ -21,7 +21,7 @@ Have you been thinking or wanting to deploy physical nodes the same way you woul
 If so, read on.
 
 So for a while I was looking for a decent solution to deploy physical/bare metal nodes in the same way we do with cloud or virtual nodes. I've saw some small mentions on one or two blog posts about installing Linux images on bare metal. But no Open Source solution for it.  
-So I was thinking, how hard can this be, why haven't anyone done this? So I wanted to to do this.
+So I was thinking, how hard can this be, why haven't anyone done this? So I wanted to do this.
 
 My next thought was, do I have to components to be abile to achieve my goal? I went on looking at the components that we were currently using.  
 We use [Foreman](https://theforeman.org) for lifecycle management of our Linux nodes. Foreman manages our PXE, DHCP and DNS and later even auto discovery.  
@@ -42,7 +42,7 @@ Really I wanted a Linux image or ISO that can PXE boot and directly after execut
 
 So I asked in #theforeman IRC channel on Freenode. And then I was told that [Foreman Discovery Image](https://github.com/theforeman/foreman-discovery-image) was desigend to be able to be extended. Foreman Dicovery Image is the image that boots via PXE and does a inventory of the machine and then waits for a reboot order from Foreman, in order to run a regular(preseed/kickstart) netboot install after discovery.
 
-I then took the discovery image and used it for something that it wasn't intended originally. The extention part was mostly designed to add discovery facts or drivers.  
+I then took the discovery image and used it for something that it wasn't intended originally. The extension part was mostly designed to add discovery facts or drivers.  
 I used that function to shut down the discovery function and execute a set of scripts that would partition up a disk and write a Linux image to it and then setup grub plus some other stuff and reboot after.  
 After the reboot the machine bootstraps using cloud-init. Same thing you can use in the cloud or some virtualization/on-prem cloud systems like OpenNebula, OpenStack, CloudStack.
 
