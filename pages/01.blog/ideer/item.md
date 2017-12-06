@@ -6,3 +6,4 @@ published: false
 testing git sync plugin
 
 * skriva om haproxy throttling
+* parted alignment 
