@@ -17,3 +17,4 @@ Meaning this page will be updated when I get an idea about something I can write
 * Our home made pager-duty solution.
 * Containers and clouds.
 * Choosing a blog platform.
+* Proper alignment using parted.
