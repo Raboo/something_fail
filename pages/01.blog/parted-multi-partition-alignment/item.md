@@ -14,3 +14,16 @@ I a google and I get to this blog https://rainbow.chard.org/2013/01/30/how-to-al
 3. parted does handle alignment, but only under some circumstances wich are not fitting for a granular multi partition of a disk.
 4. Doing multiple partitions with parted and wanting to align them all is a real pain in the...
 
+So basically you can use parted to align multie partitions IF you use percentage. I tried
+```
+parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MiB
+parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MB
+```
+This fails both of these caused next partition to not be aligned. I was under the missconception that you only need to align the start/first partition of the drive and the rest will be aligend. WRONG!
+So what is wrong with above statement? First I have a small static size, apparantly my USB ~32MB in alignent size. So it actually needs to start somewhere around where I end the partition in above examples.
+
+Then I test something like
+```
+parted -a optimal -s -- /dev/sdX mkpart primary 0% 64MB
+```
+Ok, so now the partitions starts at a correct alignment position, but it doesn't end at one, or perhaps it does, but I'm not sure, but next partition is still not aligned.
