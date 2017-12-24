@@ -53,13 +53,54 @@ I create a partition to get the sizes.
 ```
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 1%
 # optimal align byte size
-byte=$(parted -a optimal -s -- /dev/sdX unit B print | grep " 1 " |awk '{print $2}')
+byte=$(parted -s -- /dev/sdX unit B print | grep " 1 " |awk '{print $2}')
 byte=${byte::-1}
 # optimal align sector size
-sector=$(parted -a optimal -s -- /dev/sdX unit S print | grep " 1 " |awk '{print $2}')
+sector=$(parted -s -- /dev/sdX unit S print | grep " 1 " |awk '{print $2}')
 sector=${sector::-1}
 parted -s -- /dev/sdX rm 1
 ```
 
 So now I the variables `byte` and `sector` with the optimal aligment size in bytes and sectors.
 With those two variables we can create the partitions we want using basic math.
+
+Lets create a grub partition.
+
+```
+end=$((${sector}+${sector}))
+parted -a optimal -s -- /dev/sdX mkpart primary ${sector}S ${end}S
+parted -s -- /dev/sdX name 1 grub
+parted -s -- /dev/sdX set 1 bios_grub on
+```
+
+Now we need to set a starting point for next partition.
+
+```
+start=$(parted -s -- /dev/sdX unit S print | grep " 1 " |awk '{print $3}')
+start=${start::-1}
+start=$((${start}+${sector}))
+```
+
+Lets make a 8GB swap partition.
+
+```
+end=$((8*1024*1024*1024)) # 8GB
+round=$((${end}/${byte})) # lets round it
+end=$((${byte}*${round})) # so alignment size in bytes + rounded size.
+parted -a optimal -s -- /dev/sdX mkpart primary linux-swap ${start}S ${end}B
+parted -s -- /dev/sdX name 2 swap
+```
+
+Ok, now just repeat to calcualte start size for next partition (grepping the second partition).
+
+```
+start=$(parted -s -- /dev/sdX unit S print | grep " 2 " |awk '{print $3}')
+start=${start::-1}
+start=$((${start}+${sector}))
+```
+
+```
+parted -a optimal -s -- /dev/sdX mkpart primary ext4 ${start}S -1
+parted -s -- /dev/sdX name 3 rootfs
+parted -s -- /dev/sdX set 3 boot on
+```
