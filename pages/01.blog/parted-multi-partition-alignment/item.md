@@ -24,8 +24,6 @@ LOCALBOOT -1
 
 I even upgrade the NIC firmware and try the above stuff again.
 
-- skriva om pxe+localboot-1+firmware.
-
 Ehrm I'm feeling my hair is getting grayer and grayer, so what do I do next. I start debugging the installer, it must have failed with grub or something. I spent more time that I would like to admit. But during all this debuging I get stuck cause I see a message in the output/journalctl log. The partitions are not optimally aligned. And I was devestated, cause previously I was under the illusion that I did properly align my partitions, which apperanlty I wasn't. So I spend a lot of time trying to fix that, for now I gotta keep you in suspense about this HP not booting a USB stick, cause it's more important to fix the damn alignemnt.
 
 I a google and I get to this blog https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/ about how to calculate alignment. I learn from there that I can add `/sys/block/sdb/queue/optimal_io_size` with `/sys/block/sdb/alignment_offset` and divide the result with `/sys/block/sdb/queue/physical_block_size`. Sure, but I was under the illusion that parted could do the alignment for you. So I start doing a lot of trial-and-error and I learn a couple of things.
