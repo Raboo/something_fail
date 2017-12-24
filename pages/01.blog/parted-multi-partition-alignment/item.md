@@ -9,16 +9,16 @@ Being a typical HP node it need to have quirky quirks, otherwise it wouldn't be 
 So I'm at a loss here. I've done this procedure on our other Dell nodes in the cluster and it works. So my first instinct is, okay there's gotta be something wrong in the BIOS settings, I start testing shitloads of different setting combinations. That didn't work!
 So my next instinct is to try the different pxe boot options.
 
-```
+```pxe
 KERNEL <%= foreman_server_url %>/files/helpers/chain.c32
 APPEND hd0
 ```
 
-```
+```pxe
 LOCALBOOT 0
 ```
 
-```
+```pxe
 LOCALBOOT -1
 ```
 
