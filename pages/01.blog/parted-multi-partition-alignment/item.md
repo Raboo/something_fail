@@ -60,3 +60,6 @@ sector=$(parted -a optimal -s -- /dev/sdX unit S print | grep " 1 " |awk '{print
 sector=${sector::-1}
 parted -s -- /dev/sdX rm 1
 ```
+
+So now I the variables `byte` and `sector` with the optimal aligment size in bytes and sectors.
+With those two variables we can create the partitions we want using basic math.
