@@ -46,3 +46,17 @@ Then I test something like
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 64MB
 ```
 Ok, so now the partitions starts at a correct alignment position, but it doesn't end at one, or perhaps it does, but I'm not sure, but next partition is still not aligned.
+
+So how should I go about this? I decided to use parted to calculate the optimal alignment size for me and use that size setup the different partitions.
+I create a partition to get the sizes.
+
+```
+parted -a optimal -s -- /dev/sdX mkpart primary 0% 1%
+# optimal align byte size
+byte=$(parted -a optimal -s -- /dev/sdX unit B print | grep " 1 " |awk '{print $2}')
+byte=${byte::-1}
+# optimal align sector size
+sector=$(parted -a optimal -s -- /dev/sdX unit S print | grep " 1 " |awk '{print $2}')
+sector=${sector::-1}
+parted -s -- /dev/sdX rm 1
+```
