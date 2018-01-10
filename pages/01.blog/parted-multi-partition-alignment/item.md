@@ -2,7 +2,7 @@
 title: 'parted multi partition alignment'
 ---
 
-This post descibes how I realized that I wasn't aliging our partitions and how I did to properly align multple partitions using parted.
+This post describes how I realised that I wasn't aligning our partitions and how I did to properly align multiple partitions using parted.
 
 A few weeks back I was replacing a SATA-DOM with a (internal) USB stick on a node in our Hyper-Converged cluster. (Basically a OpenNebula + KVM + Open vSwitch + Ceph cluster.)
 So out of 12 Nodes, we have 1 odd HP machine.
@@ -26,7 +26,7 @@ LOCALBOOT -1
 
 I even upgrade the NIC firmware and try the above stuff again.
 
-Ehrm I'm feeling my hair is getting grayer and grayer, so what do I do next. I start debugging the installer, it must have failed with grub or something. I spent more time that I would like to admit. But during all this debuging I get stuck cause I see a message in the output/journalctl log. The partitions are not optimally aligned. And I was devestated, cause previously I was under the illusion that I did properly align my partitions, which apperanlty I wasn't. So I spend a lot of time trying to fix that, for now I gotta keep you in suspense about this HP not booting a USB stick, cause it's more important to fix the damn alignemnt.
+Ehrm I'm feeling my hair is getting greyer and greyer, so what do I do next. I start debugging the installer, it must have failed with grub or something. I spent more time that I would like to admit. But during all this debugging I get stuck cause I see a message in the output/journalctl log. The partitions are not optimally aligned. And I was devastated, cause previously I was under the illusion that I did properly align my partitions, which apparently I wasn't. So I spend a lot of time trying to fix that, for now I gotta keep you in suspense about this HP not booting a USB stick, cause it's more important to fix the damn alignment.
 
 I did a google and I get to this blog [https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/](https://rainbow.chard.org/2013/01/30/how-to-align-partitions-for-best-performance-using-parted/) about how to calculate alignment. I learn from there that I can add `/sys/block/sdb/queue/optimal_io_size` with `/sys/block/sdb/alignment_offset` and divide the result with `/sys/block/sdb/queue/physical_block_size`. Sure, but I was under the illusion that parted could do the alignment for you. So I start doing a lot of trial-and-error and I learn a couple of things.
 
@@ -40,8 +40,8 @@ So basically you can use parted to align multie partitions IF you use percentage
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MiB
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MB
 ```
-Both of these fail caused next partition to not be aligned. I was under the missconception that you only need to align the start/first partition of the drive and the rest will be aligend. WRONG!
-So what is wrong with above statement? First I have a small static size, apparantly my USB ~32MB in alignent size. So it actually needs to start somewhere around where I end the partition in above examples.
+Both of these fail caused next partition to not be aligned. I was under the misconception that you only need to align the start/first partition of the drive and the rest will be aligned. WRONG!
+So what is wrong with above statement? First I have a small static size, apparently my USB ~32MB in alignment size. So it actually needs to start somewhere around where I end the partition in above examples.
 
 Then I test something like
 ```
@@ -65,7 +65,7 @@ sector=${sector::-1}
 parted -s -- /dev/sdX rm 1
 ```
 
-So now I the variables `byte` and `sector` with the optimal aligment size in bytes and sectors.
+So now I the variables `byte` and `sector` with the optimal alignment size in bytes and sectors.
 With those two variables we can create the partitions we want using basic math.
 
 Lets create a small grub partition. I decided to size it as a minimal alignment size (this is not necessary, I'll show on the next partition how to size it to your choice). 
@@ -95,7 +95,7 @@ parted -a optimal -s -- /dev/sdX mkpart primary linux-swap ${start}S ${end}B
 parted -s -- /dev/sdX name 2 swap
 ```
 
-Ok, now just repeat to calcualte start size for next partition (grepping the second partition).
+Ok, now just repeat to calculate start size for next partition (greping the second partition).
 
 ```
 start=$(parted -s -- /dev/sdX unit S print | grep " 2 " |awk '{print $3}')
@@ -116,4 +116,4 @@ And now lets finish the side story on what was wrong in the one odd HP server.
 
 So after searching the entire net. I found a [Server Fault question](https://serverfault.com/a/750083/154660) about someone that had troubles booting from a USB stick on a HP Microserver. And the answer explained that it needs to be a MBR partition table and not a GPT when booting from USB on that device. So I figured that it must be the same thing on HP ProLiant Rack Servers.
 
-So without this HP node not booting from the USB stick I wouldn't have gray hair and I wouldn't know that I didn't align my partitions properly. Still I'm wondering why HP doesn't treat a USB stick as a regular HDD?
+So without this HP node not booting from the USB stick I wouldn't have grey hair and I wouldn't know that I didn't align my partitions properly. Still I'm wondering why HP doesn't treat a USB stick as a regular HDD?
