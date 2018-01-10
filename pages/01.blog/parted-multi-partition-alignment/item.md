@@ -68,7 +68,7 @@ parted -s -- /dev/sdX rm 1
 So now I the variables `byte` and `sector` with the optimal aligment size in bytes and sectors.
 With those two variables we can create the partitions we want using basic math.
 
-Lets create a grub partition.
+Lets create a small grub partition. I decided to size it as a minimal alignment size (this is not necessary, I'll show on the next partition how to size it to your choice). 
 
 ```
 end=$((${sector}+${sector}))
@@ -88,8 +88,8 @@ start=$((${start}+${sector}))
 Lets make a 8GB swap partition.
 
 ```
-end=$((8*1024*1024*1024)) # 8GB
-round=$((${end}/${byte})) # lets round it
+end=$((8*1024*1024*1024)) # 8GB in bytes.
+round=$((${end}/${byte})) # lets round it using optimal align byte size.
 end=$((${byte}*${round})) # so alignment size in bytes + rounded size.
 parted -a optimal -s -- /dev/sdX mkpart primary linux-swap ${start}S ${end}B
 parted -s -- /dev/sdX name 2 swap
