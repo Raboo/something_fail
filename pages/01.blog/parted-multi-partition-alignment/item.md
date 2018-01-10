@@ -113,3 +113,7 @@ parted -s -- /dev/sdX set 3 boot on
 
 Alright, so I've showed how to align multiple partitions with with parted using division, multiplication and addition.
 And now lets finish the side story on what was wrong in the one odd HP server.
+
+So after searching the entire net. I found a [Server Fault question](https://serverfault.com/a/750083/154660) about someone that had troubles booting from a USB stick on a HP Microserver. And the answer explained that it needs to be a MBR partition table and not a GPT when booting from USB on that device. So I figured that it must be the same thing on HP ProLiant Rack Servers.
+
+So without this HP node not booting from the USB stick I wouldn't have gray hair and I wouldn't know that I didn't align my partitions properly. Still I'm wondering why HP doesn't treat a USB stick as a regular HDD?
