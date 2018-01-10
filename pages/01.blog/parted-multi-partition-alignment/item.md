@@ -2,7 +2,7 @@
 title: 'parted multi partition alignment'
 ---
 
-This post descibes how I realized that I wasn't aliging our partitions properly and how I fixed it.
+This post descibes how I realized that I wasn't aliging our partitions and how I did to properly align multple partitions using parted.
 
 A few weeks back I was replacing a SATA-DOM with a (internal) USB stick on a node in our Hyper-Converged cluster. (Basically a OpenNebula + KVM + Open vSwitch + Ceph cluster.)
 So out of 12 Nodes, we have 1 odd HP machine.
