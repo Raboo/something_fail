@@ -2,6 +2,8 @@
 title: 'parted multi partition alignment'
 ---
 
+This post descibes how I realized that I wasn't aliging our partitions properly and how I fixed it.
+
 A few weeks back I was replacing a SATA-DOM with a (internal) USB stick on a node in our Hyper-Converged cluster. (Basically a OpenNebula + KVM + Open vSwitch + Ceph cluster.)
 So out of 12 Nodes, we have 1 odd HP machine.
 Being a typical HP node it need to have quirky quirks, otherwise it wouldn't be a HP. So using our our bare-metal image installer I boot a image over the network and partition and write the Linux image to the USB. Then the installer reboots the node and it is supposed to boot into the OS, err guess again! It doesn't!
@@ -108,3 +110,6 @@ parted -a optimal -s -- /dev/sdX mkpart primary ext4 ${start}S -1
 parted -s -- /dev/sdX name 3 rootfs
 parted -s -- /dev/sdX set 3 boot on
 ```
+
+Alright, so I've showed how to align multiple partitions with with parted using division, multiplication and addition.
+And now lets finish the side story on what was wrong in the one odd HP server.
