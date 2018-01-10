@@ -51,6 +51,7 @@ So how should I go about this? I decided to use parted to calculate the optimal 
 I create a partition to get the sizes.
 
 ```
+# create a temporary partition to find out optimal alignment sizes.
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 1%
 # optimal align byte size
 byte=$(parted -s -- /dev/sdX unit B print | grep " 1 " |awk '{print $2}')
@@ -58,6 +59,7 @@ byte=${byte::-1}
 # optimal align sector size
 sector=$(parted -s -- /dev/sdX unit S print | grep " 1 " |awk '{print $2}')
 sector=${sector::-1}
+# remove the temporary partition now that we know the sizes.
 parted -s -- /dev/sdX rm 1
 ```
 
@@ -98,6 +100,8 @@ start=$(parted -s -- /dev/sdX unit S print | grep " 2 " |awk '{print $3}')
 start=${start::-1}
 start=$((${start}+${sector}))
 ```
+
+Now that we have start position, lets create the last partition and let it end at end of disk.
 
 ```
 parted -a optimal -s -- /dev/sdX mkpart primary ext4 ${start}S -1
