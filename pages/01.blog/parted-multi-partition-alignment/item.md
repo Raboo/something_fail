@@ -9,6 +9,7 @@ taxonomy:
         - USB
         - parted
         - pxe
+visible: true
 ---
 
 This post describes how I realised that I wasn't aligning our partitions and how I did to properly align multiple partitions using parted.
