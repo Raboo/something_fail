@@ -47,7 +47,7 @@ I did a google and I get to this blog [https://rainbow.chard.org/2013/01/30/how-
 
 So basically you can use parted to align multie partitions IF you use percentage. I tried
 
-```bash
+```shell
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MiB
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MB
 ```
