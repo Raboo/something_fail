@@ -46,23 +46,27 @@ I did a google and I get to this blog [https://rainbow.chard.org/2013/01/30/how-
 4. Doing multiple partitions with parted and wanting to align them all is a real pain in the...
 
 So basically you can use parted to align multie partitions IF you use percentage. I tried
-```
+
+```bash
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MiB
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MB
 ```
+
 Both of these fail caused next partition to not be aligned. I was under the misconception that you only need to align the start/first partition of the drive and the rest will be aligned. WRONG!
 So what is wrong with above statement? First I have a small static size, apparently my USB ~32MB in alignment size. So it actually needs to start somewhere around where I end the partition in above examples.
 
 Then I test something like
-```
+
+```bash
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 64MB
 ```
+
 Ok, so now the partitions starts at a correct alignment position, but it doesn't end at one, or perhaps it does, but I'm not sure, but next partition is still not aligned.
 
 So how should I go about this? I decided to use parted to calculate the optimal alignment size for me and use that size setup the different partitions.
 I create a partition to get the sizes.
 
-```
+```bash
 # create a temporary partition to find out optimal alignment sizes.
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 1%
 # optimal align byte size
@@ -80,7 +84,7 @@ With those two variables we can create the partitions we want using basic math.
 
 Let's create a small grub partition. I decided to size it as a minimal alignment size (this is not necessary, I'll show on the next partition how to size it to your choice). 
 
-```
+```bash
 end=$((${sector}+${sector}))
 parted -a optimal -s -- /dev/sdX mkpart primary ${sector}S ${end}S
 parted -s -- /dev/sdX name 1 grub
@@ -89,7 +93,7 @@ parted -s -- /dev/sdX set 1 bios_grub on
 
 Now we need to set a starting point for next partition.
 
-```
+```bash
 start=$(parted -s -- /dev/sdX unit S print | grep " 1 " |awk '{print $3}')
 start=${start::-1}
 start=$((${start}+${sector}))
@@ -97,7 +101,7 @@ start=$((${start}+${sector}))
 
 Let's make a 8GB swap partition.
 
-```
+```bash
 end=$((8*1024*1024*1024)) # 8GB in bytes.
 round=$((${end}/${byte})) # round it using optimal align byte size.
 end=$((${byte}*${round})) # so alignment size in bytes + rounded size.
@@ -107,7 +111,7 @@ parted -s -- /dev/sdX name 2 swap
 
 Ok, now just repeat to calculate start size for next partition (greping the second partition).
 
-```
+```bash
 start=$(parted -s -- /dev/sdX unit S print | grep " 2 " |awk '{print $3}')
 start=${start::-1}
 start=$((${start}+${sector}))
@@ -115,7 +119,7 @@ start=$((${start}+${sector}))
 
 Now that we have start position, let's create the last partition and let it end at end of disk.
 
-```
+```bash
 parted -a optimal -s -- /dev/sdX mkpart primary ext4 ${start}S -1
 parted -s -- /dev/sdX name 3 rootfs
 parted -s -- /dev/sdX set 3 boot on
