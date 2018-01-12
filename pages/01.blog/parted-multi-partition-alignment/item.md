@@ -32,7 +32,7 @@ I did a google and I get to this blog [https://rainbow.chard.org/2013/01/30/how-
 
 1. This Rainbow Chard blog only shows you how to align one partition.
 2. The rest of the Internet is drowning in examples on how to align one partition with parted.
-3. parted does handle alignment, but only under some circumstances wich are not fitting for a granular multi partition of a disk.
+3. parted does handle alignment, but only under some circumstances which are not fitting for a granular multi partition of a disk.
 4. Doing multiple partitions with parted and wanting to align them all is a real pain in the...
 
 So basically you can use parted to align multie partitions IF you use percentage. I tried
@@ -68,7 +68,7 @@ parted -s -- /dev/sdX rm 1
 So now I the variables `byte` and `sector` with the optimal alignment size in bytes and sectors.
 With those two variables we can create the partitions we want using basic math.
 
-Lets create a small grub partition. I decided to size it as a minimal alignment size (this is not necessary, I'll show on the next partition how to size it to your choice). 
+Let's create a small grub partition. I decided to size it as a minimal alignment size (this is not necessary, I'll show on the next partition how to size it to your choice). 
 
 ```
 end=$((${sector}+${sector}))
@@ -85,11 +85,11 @@ start=${start::-1}
 start=$((${start}+${sector}))
 ```
 
-Lets make a 8GB swap partition.
+Let's make a 8GB swap partition.
 
 ```
 end=$((8*1024*1024*1024)) # 8GB in bytes.
-round=$((${end}/${byte})) # lets round it using optimal align byte size.
+round=$((${end}/${byte})) # round it using optimal align byte size.
 end=$((${byte}*${round})) # so alignment size in bytes + rounded size.
 parted -a optimal -s -- /dev/sdX mkpart primary linux-swap ${start}S ${end}B
 parted -s -- /dev/sdX name 2 swap
@@ -103,7 +103,7 @@ start=${start::-1}
 start=$((${start}+${sector}))
 ```
 
-Now that we have start position, lets create the last partition and let it end at end of disk.
+Now that we have start position, let's create the last partition and let it end at end of disk.
 
 ```
 parted -a optimal -s -- /dev/sdX mkpart primary ext4 ${start}S -1
@@ -112,7 +112,7 @@ parted -s -- /dev/sdX set 3 boot on
 ```
 
 Alright, so I've showed how to align multiple partitions with with parted using division, multiplication and addition.
-And now lets finish the side story on what was wrong in the one odd HP server.
+And now I'll finish the side story on what was wrong in the one odd HP server.
 
 So after searching the entire net. I found a [Server Fault question](https://serverfault.com/a/750083/154660) about someone that had troubles booting from a USB stick on a HP Microserver. And the answer explained that it needs to be a MBR partition table and not a GPT when booting from USB on that device. So I figured that it must be the same thing on HP ProLiant Rack Servers.
 
