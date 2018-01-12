@@ -1,5 +1,14 @@
 ---
 title: 'parted multi partition alignment'
+published: true
+date: '2018-01-12 11:53'
+taxonomy:
+    category:
+        - blog
+    tag:
+        - USB
+        - parted
+        - pxe
 ---
 
 This post describes how I realised that I wasn't aligning our partitions and how I did to properly align multiple partitions using parted.
