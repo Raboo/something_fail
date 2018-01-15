@@ -45,7 +45,7 @@ I did a google and I get to this blog [https://rainbow.chard.org/2013/01/30/how-
 3. parted does handle alignment, but only under some circumstances which are not fitting for a granular multi partition of a disk.
 4. Doing multiple partitions with parted and wanting to align them all is a real pain in the...
 
-So basically you can use parted to align multie partitions IF you use percentage. I tried
+So basically you can use parted to align multiple partitions IF you use percentage. I tried
 
 ```bash
 parted -a optimal -s -- /dev/sdX mkpart primary 0% 32MiB
