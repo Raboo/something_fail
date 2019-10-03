@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ grav.language.getLanguage ?: 'en' }}">
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 <head>
 {% set theme_config = attribute(config.themes, config.system.pages.theme) %}
 {% block head %}
@@ -31,7 +31,6 @@
         {% endif %}
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans:800" rel="stylesheet">
     {% endblock %}
-    {{ assets.css() }}
 
     {% block javascripts %}
         {% do assets.add('jquery',101) %}
@@ -42,8 +41,11 @@
             {% do assets.add('theme://js/featherlight.min.js') %}
         {% endif %}
     {% endblock %}
-    {{ assets.js() }}
 
+    {% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+    {% endblock %}
 {% endblock head%}
 </head>
 <body id="top" class="{{ page.header.body_classes }}">
@@ -101,6 +103,7 @@
         {% endif %}
     });
     </script>
+    {{ assets.js('bottom')|raw }} 
     {% endblock %}
 </body>
 </html>
